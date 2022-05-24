@@ -13,3 +13,10 @@ export function getOne(id) {
         )
 
 }
+
+export function gameLatest() {
+    return (fetch(`${baseUrl}/games?sortBy=_createdOn%20desc&distinct=category`)
+        .then(res => res.json())
+        )
+
+}
