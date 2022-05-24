@@ -13,21 +13,32 @@ import ErrorPage from "./components/ErrorPage"
 
 
 function App() {
-  const routes = {
-    '/home': <WelcomeWorld />,
-    '/login': <Login />,
-    '/register': <Register />,
-    '/create-game': <CreateGame />,
-    '/editGame': <EditGame />,
-    '/gameDetails': <GameDetails />,
-    '/games': <GameCatalog />,
-
-  }
-
-  const [page, setPage] = useState('/home')
-
+  const [page, setPage] = useState('home')
+  
   const navigationChangeHandler = (path) => {
     setPage(path);
+  }
+  
+  const router = (path) =>{
+
+    let pathNames = path.split('/');
+
+    let rootPath = pathNames[1];
+    let argument = pathNames[2];
+
+    const routes = {
+      'home': <WelcomeWorld />,
+      'login': <Login />,
+      'register': <Register />,
+      'create-game': <CreateGame />,
+      'editGame': <EditGame />,
+      'details': <GameDetails id={argument} />,
+      'games': <GameCatalog navigationChangeHandler={navigationChangeHandler}/>,
+  
+    };
+
+
+    return routes[rootPath];
   }
 
   return (
@@ -37,7 +48,7 @@ function App() {
       />
 
       <main id="main-content">
-        {routes[page] || <ErrorPage />}
+        {router(page) || <ErrorPage />}
         {/* <Login />
       <Register />
       <CreateGame />
