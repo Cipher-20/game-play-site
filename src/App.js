@@ -10,6 +10,8 @@ import GameDetails from "./components/GameDetails"
 import GameCatalog from "./components/GameCatalog/GameCatalog"
 import ErrorPage from "./components/ErrorPage"
 
+
+
 function App() {
   const routes = {
     '/home': <WelcomeWorld />,

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+import * as gameServices from '../../services/gameServices'
 import GameCard from './GameCard';
 
 function GameCatalog() {
@@ -7,11 +8,10 @@ function GameCatalog() {
   const [games, setGames] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3030/data/games?sortBy=_createdOn%20desc&distinct=category')
-      .then(res => res.json())
-      .then(gameResult => {
-        setGames(gameResult);
-      })
+    gameServices.getAll()
+    .then(gameResult => {
+      setGames(gameResult);
+    })
   }, []);
 
   return (
