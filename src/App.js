@@ -13,7 +13,7 @@ import ErrorPage from "./components/ErrorPage"
 
 
 function App() {
-  const [page, setPage] = useState('home')
+  const [page, setPage] = useState('/home')
   
   const navigationChangeHandler = (path) => {
     setPage(path);
