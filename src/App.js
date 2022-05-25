@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Route } from 'react-router-dom'
 
 import Header from "./components/Header";
 import WelcomeWorld from "./components/WelcomeWorld/WelcomeWorld";
@@ -14,12 +15,12 @@ import ErrorPage from "./components/ErrorPage"
 
 function App() {
   const [page, setPage] = useState('/home')
-  
+
   const navigationChangeHandler = (path) => {
     setPage(path);
   }
-  
-  const router = (path) =>{
+
+  const router = (path) => {
 
     let pathNames = path.split('/');
 
@@ -27,14 +28,14 @@ function App() {
     let argument = pathNames[2];
 
     const routes = {
-      'home': <WelcomeWorld navigationChangeHandler={navigationChangeHandler}/>,
+      'home': <WelcomeWorld navigationChangeHandler={navigationChangeHandler} />,
       'login': <Login />,
       'register': <Register />,
       'create-game': <CreateGame />,
       'editGame': <EditGame />,
       'details': <GameDetails id={argument} />,
-      'games': <GameCatalog navigationChangeHandler={navigationChangeHandler}/>,
-  
+      'games': <GameCatalog navigationChangeHandler={navigationChangeHandler} />,
+
     };
 
 
@@ -48,14 +49,7 @@ function App() {
       />
 
       <main id="main-content">
-        {router(page) || <ErrorPage />}
-        {/* <Login />
-      <Register />
-      <CreateGame />
-      <EditGame />
-      <GameDetails />
-      <GameCatalog /> */}
-
+        <Route path="/" exact component={WelcomeWorld}/>
       </main>
 
     </div>
