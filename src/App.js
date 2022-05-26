@@ -25,6 +25,7 @@ function App() {
           <Route path="/create-game" component={CreateGame} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
+          <Route path="/details/:id" component={GameDetails} />
         </Switch>
       </main>
 

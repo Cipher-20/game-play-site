@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import * as gameServices from '../services/gameServices'
 
 function GameDetails({
-  id
+  match
 }) {
 
+  let id = match.params.id
   const [game,setGame] = useState({});
 
   useEffect(() =>{
@@ -43,8 +45,8 @@ function GameDetails({
           </div>
 
           <div className="buttons">
-            <a href="#" className="button">Edit</a>
-            <a href="#" className="button">Delete</a>
+            <Link to="#" className="button">Edit</Link>
+            <Link to="#" className="button">Delete</Link>
           </div>
         </div>
 
