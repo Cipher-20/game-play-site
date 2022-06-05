@@ -1,5 +1,14 @@
 
-function Login() {
+function Login({
+    history
+}) {
+    const onFormSubmit = (e) =>{
+        e.preventDefault();
+
+
+        history.push('/');
+    }
+
     return (
         <section id="login-page" className="auth">
             <form id="login">
@@ -12,7 +21,7 @@ function Login() {
 
                     <label for="login-pass">Password:</label>
                     <input type="password" id="login-password" name="password" />
-                    <input type="submit" className="btn submit" value="Login" />
+                    <input type="submit" onClick={onFormSubmit} className="btn submit" value="Login" />
                     <p className="field">
                         <span>If you don't have profile click <a href="#">here</a></span>
                     </p>
