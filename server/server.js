@@ -1,3 +1,5 @@
+const path = require('path')
+
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('http'), require('fs'), require('crypto')) :
         typeof define === 'function' && define.amd ? define(['http', 'fs', 'crypto'], factory) :
@@ -1391,6 +1393,14 @@
     ];
 
     const server = http__default['default'].createServer(requestHandler(plugins, services));
+
+    if(process.env.NODE_ENV === 'production'){
+        app.use(express.static('public'));
+
+        app.get('*', (req,res) =>{
+            res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
+        });
+    }
 
     const port = process.env.PORT || 3030;
     server.listen(port);
