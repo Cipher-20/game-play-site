@@ -3,11 +3,11 @@ import { Route, Switch } from 'react-router-dom'
 
 import Header from "./components/Header";
 import WelcomeWorld from "./components/WelcomeWorld/WelcomeWorld";
-import Login from "./components/Login";
-import Register from "./components/Register";
-import CreateGame from "./components/CreateGame";
-import EditGame from "./components/EditGame"
-import GameDetails from "./components/GameDetails"
+import Login from "./components/Login/Login";
+import Register from "./components/Register/Register";
+import CreateGame from "./components/CreateGame/CreateGame";
+import EditGame from "./components/EditGame/EditGame"
+import GameDetails from "./components/GameDetails/GameDetails"
 import GameCatalog from "./components/GameCatalog/GameCatalog"
 import ErrorPage from "./components/ErrorPage"
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import * as gameServices from '../services/gameServices'
+import * as gameServices from '../../services/gameServices'
 
 function GameDetails({
   match
