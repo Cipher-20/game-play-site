@@ -1,18 +1,17 @@
 const baseUrl = 'http://localhost:3030'
 
 export const register = async (email, password) => {
-    let response = await fetch(`${baseUrl}/users/register`,{
+    let response = await fetch(`${baseUrl}/users/register`, {
         method: 'POST',
         headers: {
             'content-type': 'application/json'
         },
-        body: JSON.stringify({email, password})
+        body: JSON.stringify({ email, password })
     });
 
     let result = await response.json();
 
-    localStorage.setItem('email', result.email);
-    localStorage.setItem('authToken', result.accessToken);
+
 
     if (response.ok) {
         return result;
@@ -20,3 +19,22 @@ export const register = async (email, password) => {
         throw result.message;
     }
 }
+
+export const login = async (email, password) => {
+    let response = await fetch(`${baseUrl}/users/login`, {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json',
+        },
+        body: JSON.stringify({ email, password })
+    });
+
+    let result = await response.json();
+
+    if (response.ok) {
+        return result;
+    } else {
+        throw result.message;
+    }
+}
+

@@ -1,17 +1,23 @@
 import * as authServices from '../../services/authServices';
+import { useAuthContext } from '../../context/authContext';
 
-function Register() {
+import { useNavigate } from 'react-router-dom';
 
-    const registerHandler = (e) =>{
+const Register = () => {
+    const navigate = useNavigate();
+    const { login } = useAuthContext;
+
+    const registerHandler = (e) => {
         e.preventDefault();
 
-        let formData = new FormData(e.currentTarget);
+        let { email, password } = Object.fromEntries(new FormData(e.currentTarget));
 
-        let email = formData.get('email');
-        let password = formData.get('password');
-
-        authServices.register(email, password);
-         
+        authServices.register(email, password)   
+            .then(authData => {
+                login(authData);
+                
+                navigate('/');
+            });
     }
 
     return (

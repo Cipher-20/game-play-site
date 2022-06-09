@@ -1,4 +1,3 @@
-import { Redirect } from 'react-router-dom';
 import * as gameServices from '../../services/gameServices';
 
 
@@ -22,9 +21,6 @@ function CreateGame() {
       maxLevel,
       imageUrl,
       summary
-    })
-    .then(result =>{
-     Redirect('/home')
     })
   }
 
