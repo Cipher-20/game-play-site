@@ -5,12 +5,12 @@ import GameCard from './GameCard';
 
 function GameCatalog({}) {
 
-  const [games, setGames] = useState([]);
+  const [games, setGame] = useState([]);
 
   useEffect(() => {
     gameServices.getAll()
     .then(gameResult => {
-      setGames(gameResult);
+      setGame(gameResult);
     })
   }, []);
 
