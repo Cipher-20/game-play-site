@@ -38,3 +38,16 @@ export const login = async (email, password) => {
     }
 }
 
+export const isAuthticated = () =>{
+    return Boolean(getUser());
+}
+
+export const getUser = () =>{
+    let email = localStorage.getItem('email');
+    return email;
+}
+
+export const logout = () =>{
+    localStorage.removeItem('email');
+}
+
