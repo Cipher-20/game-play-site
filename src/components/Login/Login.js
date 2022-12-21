@@ -1,11 +1,12 @@
+
 import { useAuthContext } from '../../context/authContext';
 
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import * as authServices from '../../services/authServices';
 
 function Login() {
     const { login } = useAuthContext;
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const loginHandler = (e) =>{
         e.preventDefault();
@@ -15,16 +16,10 @@ function Login() {
         let email = formData.get('email');
         let password = formData.get('password');
 
-        authServices.login(email, password)
-            .then(authData => {
-                login(authData);
+        authServices.login(email, password);
 
-                // navigate('/');
-            })
-            .catch(err => {
-                // TODO: show notification
-                console.log(err);
-            });
+        navigate('/');
+
     }
 
     return (

@@ -5,19 +5,19 @@ import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
     const navigate = useNavigate();
-    const { login } = useAuthContext;
 
     const registerHandler = (e) => {
         e.preventDefault();
 
         let { email, password } = Object.fromEntries(new FormData(e.currentTarget));
+        
+        let user = {
+            email,
+            password
+        }
+        authServices.register(user)   
 
-        authServices.register(email, password)   
-            .then(authData => {
-                login(authData);
-                
-                navigate('/');
-            });
+            navigate('/');
     }
 
     return (
